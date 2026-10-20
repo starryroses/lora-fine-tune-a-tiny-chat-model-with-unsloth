@@ -112,8 +112,10 @@ from datasets import Dataset
 def build_text_dataset(texts):
     return Dataset.from_dict({"text": texts})
 
-# Step 13 - tokenize_text (not yet solved)
-# TODO: implement
+# Step 13 - tokenize_text
+def tokenize_text(tokenizer, text):
+    tokens = tokenizer(text)
+    return tokens['input_ids']
 
 # Step 14 - count_tokens (not yet solved)
 # TODO: implement

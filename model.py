@@ -100,8 +100,12 @@ def build_instruction_examples():
 def format_instruction_example(example):
     return f"### Instruction:\n{example['instruction']}\n\n### Response:\n{example['response']}"
 
-# Step 11 - format_all_examples (not yet solved)
-# TODO: implement
+# Step 11 - format_all_examples
+def format_all_examples(examples):
+    formatted_egs = []
+    for eg in examples:
+        formatted_egs.append(format_instruction_example(eg))
+    return formatted_egs
 
 # Step 12 - build_text_dataset (not yet solved)
 # TODO: implement

@@ -24,8 +24,14 @@ def count_total_parameters(model):
         total += p.numel()
     return int(total)
 
-# Step 3 - is_model_4bit_quantized (not yet solved)
-# TODO: implement
+# Step 3 - is_model_4bit_quantized
+import torch.nn as nn
+import bitsandbytes as bnb
+def is_model_4bit_quantized(model):
+    for m in model.modules():
+        if isinstance(m, bnb.nn.Linear4bit):
+            return True
+    return False
 
 # Step 4 - ensure_pad_token (not yet solved)
 # TODO: implement

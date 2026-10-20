@@ -154,12 +154,16 @@ def build_sft_trainer(model, tokenizer, dataset, training_args, max_seq_length=2
     return trainer
 
 # Step 17 - run_sft_training
+from transformers.trainer_utils import IntervalStrategy
+
 def run_sft_training(trainer):
+    trainer.args.save_strategy = IntervalStrategy.NO
     trainer_stats = trainer.train()
     return float(trainer_stats.training_loss)
 
-# Step 18 - switch_to_inference_mode (not yet solved)
-# TODO: implement
+# Step 18 - switch_to_inference_mode
+def switch_to_inference_mode(model):
+    return FastLanguageModel.for_inference(model)
 
 # Step 19 - build_chat_prompt (not yet solved)
 # TODO: implement

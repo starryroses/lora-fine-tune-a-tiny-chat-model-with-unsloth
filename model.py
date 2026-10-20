@@ -177,6 +177,16 @@ def build_chat_prompt(tokenizer, instruction):
         add_generation_prompt=True,
     )
 
-# Step 20 - generate_reply (not yet solved)
-# TODO: implement
+# Step 20 - generate_reply
+def generate_reply(model, tokenizer, prompt, max_new_tokens=32):
+    inputs = tokenizer(prompt, return_tensors='pt')
+    device = model.get_input_embeddings().weight.device
+    inputs = {k: v.to(device) for k, v in inputs.items()}
+    outputs = model.generate(
+        **inputs,
+        max_new_tokens=max_new_tokens,
+        do_sample=False
+    )
+    new_tokens = outputs[0, inputs["input_ids"].shape[1]:]
+    return tokenizer.decode(new_tokens, skip_special_tokens=True)
 

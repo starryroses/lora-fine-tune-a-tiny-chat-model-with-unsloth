@@ -107,8 +107,10 @@ def format_all_examples(examples):
         formatted_egs.append(format_instruction_example(eg))
     return formatted_egs
 
-# Step 12 - build_text_dataset (not yet solved)
-# TODO: implement
+# Step 12 - build_text_dataset
+from datasets import Dataset
+def build_text_dataset(texts):
+    return Dataset.from_dict({"text": texts})
 
 # Step 13 - tokenize_text (not yet solved)
 # TODO: implement

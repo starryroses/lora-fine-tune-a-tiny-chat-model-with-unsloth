@@ -122,23 +122,19 @@ def count_tokens(input_ids):
     return len(input_ids)
 
 # Step 15 - build_training_arguments
+import unsloth
 import torch
 import transformers
 def build_training_arguments(output_dir='./sft_out', max_steps=5, learning_rate=2e-4):
-    bf16 = False
-    fp16 = False
-    if torch.cuda.is_bf16_supported():
-        bf16=True
-    else:
-        fp16=True
+    use_bf16 = torch.cuda.is_bf16_supported()
     args = transformers.TrainingArguments(
         per_device_train_batch_size=1,
          gradient_accumulation_steps=1,
          max_steps=max_steps,
          learning_rate=learning_rate,
          output_dir=output_dir,
-         bf16=bf16,
-         fp16=fp16,
+         bf16=use_bf16,
+         fp16=not use_bf16,
          logging_steps=1,
          optim='adamw_8bit',
     )
@@ -157,8 +153,10 @@ def build_sft_trainer(model, tokenizer, dataset, training_args, max_seq_length=2
     )
     return trainer
 
-# Step 17 - run_sft_training (not yet solved)
-# TODO: implement
+# Step 17 - run_sft_training
+def run_sft_training(trainer):
+    trainer_stats = trainer.train()
+    return float(trainer_stats.training_loss)
 
 # Step 18 - switch_to_inference_mode (not yet solved)
 # TODO: implement

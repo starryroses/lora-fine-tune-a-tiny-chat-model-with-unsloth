@@ -71,8 +71,30 @@ def count_trainable_parameters(model):
 def trainable_fraction(trainable_count, total_count):
     return float(trainable_count/total_count)
 
-# Step 9 - build_instruction_examples (not yet solved)
-# TODO: implement
+# Step 9 - build_instruction_examples
+def build_instruction_examples():
+    return [
+        {
+            "instruction": "What is a budget, and why is it important?",
+            "response": "A budget is a plan for how you earn, spend, and save money. It helps you control expenses, avoid unnecessary debt, and work toward financial goals."
+        },
+        {
+            "instruction": "How can I start saving money on a low income?",
+            "response": "Track your expenses, prioritize essential needs, and set aside a small amount whenever you receive income. Automating savings and reducing recurring unnecessary expenses can help you build an emergency fund over time."
+        },
+        {
+            "instruction": "Explain compound interest in simple terms.",
+            "response": "Compound interest is interest earned on both your original investment and the interest accumulated over time. For example, if you invest ₹10,000 at 10% annual interest, compounded yearly, it grows to ₹12,100 after two years, assuming the rate stays constant and no money is withdrawn."
+        },
+        {
+            "instruction": "What is the difference between stocks and bonds?",
+            "response": "A stock represents ownership in a company, while a bond generally represents a loan to a company or government. Stocks can offer higher growth potential but often have greater volatility. Bonds typically pay interest and have different risks depending on the issuer and terms."
+        },
+        {
+            "instruction": "What is a sensible way to manage credit card debt?",
+            "response": "Pay at least the minimum due on every card to avoid late-payment penalties, and direct extra payments toward the card with the highest interest rate. Avoid adding new debt where possible and consider contacting your lender if payments become difficult."
+        },
+    ]
 
 # Step 10 - format_instruction_example (not yet solved)
 # TODO: implement
